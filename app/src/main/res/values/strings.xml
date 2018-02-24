@@ -1,0 +1,20 @@
+<resources>
+
+    <!-- app ad section -->
+    <string name="app_ad_id">ca-app-pub-6382099871444261~2045692236</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
+    <!-- end of the ad section -->
+
+
+    <string name="app_name">Build It Bigger</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="joke_java">Java Joke</string>
+    <string name="joke_android">Android Joke</string>
+
+    <string name="please_connect">Please connect to internet.</string>
+    <string name="no_internet">No internet available</string>
+    <string name="connect">Connect</string>
+
+</resources>
