@@ -2,6 +2,7 @@ package com.mcc.buildit;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
 import android.view.View;
 
 import com.google.android.gms.ads.AdListener;
@@ -33,7 +34,14 @@ public class AdUtils {
         if (disableBannerAd) {
             mAdView.setVisibility(View.GONE);
         } else {
-            AdRequest adRequest = new AdRequest.Builder().build();
+            AdRequest adRequest = null;
+            if(Build.MANUFACTURER.equals("unknown")) {
+                adRequest = new AdRequest.Builder().
+                        addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+            } else {
+                adRequest = new AdRequest.Builder().build();
+            }
+
             mAdView.loadAd(adRequest);
 
             mAdView.setAdListener(new AdListener() {
@@ -57,7 +65,13 @@ public class AdUtils {
             mInterstitialAd = new InterstitialAd(activity);
             mInterstitialAd.setAdUnitId(activity.getResources().getString(R.string.interstitial_ad_unit_id));
 
-            AdRequest adRequest = new AdRequest.Builder().build();
+            AdRequest adRequest = null;
+            if(Build.MANUFACTURER.equals("unknown")) {
+                adRequest = new AdRequest.Builder().
+                        addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+            } else {
+                adRequest = new AdRequest.Builder().build();
+            }
             mInterstitialAd.loadAd(adRequest);
         }
     }

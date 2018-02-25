@@ -42,8 +42,6 @@ public class MainFragment extends Fragment {
 
         // load full screen ad
         AdUtils.getInstance(getActivity()).loadFullScreenAd(getActivity());
-
-
     }
 
     private void initListeners() {

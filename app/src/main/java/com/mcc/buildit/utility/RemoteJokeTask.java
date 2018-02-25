@@ -2,19 +2,32 @@ package com.mcc.buildit.utility;
 
 import android.os.AsyncTask;
 
-public class RemoteJokeTask extends AsyncTask<Void, Void, Void>{
+import com.google.api.client.extensions.android.http.AndroidHttp;
+import com.google.api.client.extensions.android.json.AndroidJsonFactory;
+import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
+import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
+import com.mcc.buildit.service.jokeGce.JokeGce;
 
-    private static MyApi myApiService = null;
+
+import java.io.IOException;
+
+public class RemoteJokeTask extends AsyncTask<Void, Void, String>{
+
+    private static JokeGce jokeGce = null;
+
+    private ResponseListener responseListener;
+
+    public void setResponseListener(ResponseListener responseListener) {
+        this.responseListener = responseListener;
+    }
 
     @Override
-    protected Void doInBackground(Void... voids) {
+    protected String doInBackground(Void... voids) {
 
-        if(myApiService == null) {  // Only do this once
-            MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
+        if(jokeGce == null) {
+            JokeGce.Builder builder = new JokeGce.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
-                    // options for running against local devappserver
                     // - 10.0.2.2 is localhost's IP address in Android emulator
-                    // - turn off compression when running against local devappserver
                     .setRootUrl("http://10.0.2.2:8080/_ah/api/")
                     .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
                         @Override
@@ -22,20 +35,29 @@ public class RemoteJokeTask extends AsyncTask<Void, Void, Void>{
                             abstractGoogleClientRequest.setDisableGZipContent(true);
                         }
                     });
-            // end options for devappserver
 
-            myApiService = builder.build();
+            jokeGce = builder.build();
         }
 
-        context = params[0].first;
-        String name = params[0].second;
-
         try {
-            return myApiService.sayHi(name).execute().getData();
+            return jokeGce.todaysJoke().execute().getJoke();
         } catch (IOException e) {
-            return e.getMessage();
+            e.printStackTrace();
         }
 
         return null;
+    }
+
+    @Override
+    protected void onPostExecute(String s) {
+        super.onPostExecute(s);
+
+        if(responseListener != null) {
+            responseListener.onResponse(s);
+        }
+    }
+
+    public interface ResponseListener {
+        public void onResponse(String response);
     }
 }
