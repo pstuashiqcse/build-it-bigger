@@ -59,16 +59,20 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * TODO: Task list
+     * 
      * - Banner Ad integration - DONE
      * - Java lib - DONE
      * - Android lib - DONE
      * - Integrate GCE - DONE
      * - Integrate AsyncTask - DONE
-     * - Functional test for AsyncTask -
      * - Paid flavor - DONE
      * - Add Interstitial Ad - DONE
      * - Add Loading Indicator - DONE
+     *
+     *
      * - Gradle script to run and stop server
+     * - Functional test for AsyncTask -
+     * - Show ad in emalutor -
      */
 
 }
