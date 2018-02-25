@@ -3,6 +3,8 @@ package com.mcc.buildit.utility;
 import android.app.Activity;
 import android.content.Intent;
 
+import com.mcc.libjokeandroid.JokeActivity;
+
 
 public class ActivityUtils {
 
@@ -15,15 +17,8 @@ public class ActivityUtils {
     }
 
 
-    /*public void invokeActivity(Activity activity, ArrayList<IngredientsModel> ingredientsModels, ArrayList<StepsModel> stepsModels) {
-        Intent intent = new Intent(activity, RecipeStepActivity.class);
-        intent.putParcelableArrayListExtra(Constants.KEY_INGREDIENTS, ingredientsModels);
-        intent.putParcelableArrayListExtra(Constants.KEY_STEPS, stepsModels);
-        activity.startActivity(intent);
-    }*/
-
     public void invokeAndroidJoke(Activity activity, String joke) {
-        Intent intent = new Intent("com.mcc.JOKE");
+        Intent intent = new Intent(activity, JokeActivity.class);
         intent.putExtra("joke", joke);
         activity.startActivity(intent);
     }

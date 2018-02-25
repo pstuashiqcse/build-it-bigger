@@ -3,17 +3,12 @@ package com.mcc.buildit;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdView;
-import com.mcc.buildit.R;
 import com.mcc.buildit.utility.ActivityUtils;
-import com.mcc.buildit.utility.AdUtils;
 import com.mcc.buildit.utility.Utils;
 import com.mcc.libjokejava.MyJoke;
 

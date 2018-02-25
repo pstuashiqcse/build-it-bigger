@@ -1,0 +1,9 @@
+<resources>
+
+    <!-- app ad section -->
+    <string name="app_ad_id">ca-app-pub-6382099871444261~1045305168</string>
+    <string name="banner_ad_unit_id">ca-app-pub-6382099871444261/5582056791</string>
+    <string name="interstitial_ad_unit_id">ca-app-pub-6382099871444261/1221399138</string>
+    <!-- end of the ad section -->
+
+</resources>

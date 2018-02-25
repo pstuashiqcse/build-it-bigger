@@ -3,9 +3,14 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://E:\Ashiq\nanodegree-projects\build-it-bigger\app\app.iml" filepath="E:\Ashiq\nanodegree-projects\build-it-bigger\app\app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/backend.iml" filepath="$PROJECT_DIR$/backend/backend.iml" />
       <module fileurl="file://$PROJECT_DIR$/build-it-bigger.iml" filepath="$PROJECT_DIR$/build-it-bigger.iml" />
+      <module fileurl="file://E:\Ashiq\nanodegree-projects\build-it-bigger\build-it-bigger.iml" filepath="E:\Ashiq\nanodegree-projects\build-it-bigger\build-it-bigger.iml" />
       <module fileurl="file://$PROJECT_DIR$/libjokeandroid/libjokeandroid.iml" filepath="$PROJECT_DIR$/libjokeandroid/libjokeandroid.iml" />
+      <module fileurl="file://E:\Ashiq\nanodegree-projects\build-it-bigger\libjokeandroid\libjokeandroid.iml" filepath="E:\Ashiq\nanodegree-projects\build-it-bigger\libjokeandroid\libjokeandroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/libjokejava/libjokejava.iml" filepath="$PROJECT_DIR$/libjokejava/libjokejava.iml" />
+      <module fileurl="file://E:\Ashiq\nanodegree-projects\build-it-bigger\libjokejava\libjokejava.iml" filepath="E:\Ashiq\nanodegree-projects\build-it-bigger\libjokejava\libjokejava.iml" />
     </modules>
   </component>
 </project>

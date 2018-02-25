@@ -1,4 +1,14 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.cloud.tools.endpoints-framework-client'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.google.cloud.tools:endpoints-framework-gradle-plugin:1.0.2'
+    }
+}
 
 android {
     compileSdkVersion 26
@@ -18,14 +28,12 @@ android {
         }
     }
 
-    flavorDimensions "paid", "free"
+    flavorDimensions "default"
     productFlavors {
         paid {
-            dimension "paid"
             applicationId "com.mcc.buildit.paid"
         }
         free {
-            dimension "free"
             applicationId "com.mcc.buildit.free"
         }
     }
@@ -41,7 +49,11 @@ dependencies {
     compile project(':libjokejava')
     compile project(':libjokeandroid')
 
-    freeCompile 'com.google.firebase:firebase-core:11.8.0'
+    endpointsServer project(path: ':backend', configuration: 'endpoints')
+    implementation 'com.google.api-client:google-api-client:1.23.0'
+    implementation 'com.google.http-client:google-http-client-android:1.23.0'
+    implementation 'com.google.code.findbugs:jsr305:3.0.1'
+
     freeCompile 'com.google.firebase:firebase-ads:11.8.0'
 
 }

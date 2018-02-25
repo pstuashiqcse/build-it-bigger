@@ -13,7 +13,6 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdView;
 import com.mcc.buildit.R;
 import com.mcc.buildit.utility.ActivityUtils;
-import com.mcc.buildit.utility.AdUtils;
 import com.mcc.buildit.utility.Utils;
 import com.mcc.libjokejava.MyJoke;
 
@@ -51,7 +50,7 @@ public class MainFragment extends Fragment {
         btnJavaJoke.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showJavaJoke();
+                showAdThenJoke();
             }
         });
 
@@ -69,12 +68,28 @@ public class MainFragment extends Fragment {
         Utils.showToast(getActivity(), jokestr);
     }
 
+    public void showAdThenJoke() {
+        if (AdUtils.getInstance(getActivity()).showFullScreenAd()) {
+            AdUtils.getInstance(getActivity()).getInterstitialAd().setAdListener(new AdListener() {
+                @Override
+                public void onAdClosed() {
+                    super.onAdClosed();
+                    //AdUtils.getInstance(getActivity()).loadFullScreenAd(getActivity());
+                    showJavaJoke();
+                }
+            });
+        } else {
+            showJavaJoke();
+        }
+    }
+
     public void showAdThenActivity() {
         if (AdUtils.getInstance(getActivity()).showFullScreenAd()) {
             AdUtils.getInstance(getActivity()).getInterstitialAd().setAdListener(new AdListener() {
                 @Override
                 public void onAdClosed() {
                     super.onAdClosed();
+                    //AdUtils.getInstance(getActivity()).loadFullScreenAd(getActivity());
                     ActivityUtils.getInstance().invokeAndroidJoke(getActivity(), new MyJoke().getJokeOfTheDay());
                 }
             });
