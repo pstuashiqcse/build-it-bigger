@@ -25,3 +25,20 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+task automateServer {
+    dependsOn(['startJokeServer','stopJokeServer','runTestsScript'])
+}
+
+task startJokeServer {
+    dependsOn ':backend:appengineRun'
+}
+
+task stopJokeServer {
+    dependsOn ':backend:appengineStop'
+
+}
+
+task runTestsScript {
+    dependsOn ':app:connectedAndroidTest'
+}

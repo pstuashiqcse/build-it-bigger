@@ -5,7 +5,7 @@ import java.util.Calendar;
 
 public class MyJoke {
 
-    private ArrayList<String> jokes;
+    private final ArrayList<String> jokes;
 
     public MyJoke() {
         jokes = new ArrayList<>();

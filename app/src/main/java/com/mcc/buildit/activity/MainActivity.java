@@ -10,13 +10,15 @@ import com.mcc.buildit.R;
 import com.mcc.buildit.MainFragment;
 import com.mcc.buildit.utility.ActivityUtils;
 import com.mcc.buildit.utility.RemoteJokeTask;
+import com.mcc.buildit.utility.TestListener;
 import com.mcc.buildit.utility.Utils;
-import com.mcc.libjokejava.MyJoke;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     private Button btnGceJoke;
     private ProgressBar gceProgress;
+
+    private TestListener testListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadData() {
+
         gceProgress.setVisibility(View.VISIBLE);
         btnGceJoke.setEnabled(false);
         RemoteJokeTask remoteJokeTask = new RemoteJokeTask();
@@ -46,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 gceProgress.setVisibility(View.GONE);
                 btnGceJoke.setEnabled(true);
+
+                if(testListener != null) {
+                    testListener.onData(response);
+                }
 
                 if (response != null) {
                     ActivityUtils.getInstance().invokeAndroidJoke(MainActivity.this, response);
@@ -57,22 +64,10 @@ public class MainActivity extends AppCompatActivity {
         remoteJokeTask.execute();
     }
 
-    /**
-     * TODO: Task list
-     * 
-     * - Banner Ad integration - DONE
-     * - Java lib - DONE
-     * - Android lib - DONE
-     * - Integrate GCE - DONE
-     * - Integrate AsyncTask - DONE
-     * - Paid flavor - DONE
-     * - Add Interstitial Ad - DONE
-     * - Add Loading Indicator - DONE
-     *
-     *
-     * - Gradle script to run and stop server
-     * - Functional test for AsyncTask -
-     * - Show ad in emalutor -
-     */
+    public void setTestListener(TestListener testListener) {
+        this.testListener = testListener;
+    }
+
+
 
 }

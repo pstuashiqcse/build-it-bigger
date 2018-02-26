@@ -34,14 +34,7 @@ public class AdUtils {
         if (disableBannerAd) {
             mAdView.setVisibility(View.GONE);
         } else {
-            AdRequest adRequest = null;
-            if(isEmulator()) {
-                adRequest = new AdRequest.Builder().
-                        addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
-            } else {
-                adRequest = new AdRequest.Builder().build();
-            }
-
+            AdRequest adRequest = new AdRequest.Builder().build();
             mAdView.loadAd(adRequest);
 
             mAdView.setAdListener(new AdListener() {
@@ -56,6 +49,8 @@ public class AdUtils {
                     super.onAdFailedToLoad(errorCode);
                     mAdView.setVisibility(View.GONE);
                 }
+
+
             });
         }
     }
@@ -64,14 +59,7 @@ public class AdUtils {
         if (!disableInterstitialAd) {
             mInterstitialAd = new InterstitialAd(activity);
             mInterstitialAd.setAdUnitId(activity.getResources().getString(R.string.interstitial_ad_unit_id));
-
-            AdRequest adRequest = null;
-            if(isEmulator()) {
-                adRequest = new AdRequest.Builder().
-                        addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
-            } else {
-                adRequest = new AdRequest.Builder().build();
-            }
+            AdRequest adRequest = new AdRequest.Builder().build();
             mInterstitialAd.loadAd(adRequest);
         }
     }
