@@ -34,7 +34,11 @@ public class AdUtils {
         if (disableBannerAd) {
             mAdView.setVisibility(View.GONE);
         } else {
-            AdRequest adRequest = new AdRequest.Builder().build();
+            //AdRequest adRequest = new AdRequest.Builder().build();
+            AdRequest adRequest = new AdRequest.Builder()
+                    .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                    .addTestDevice("58CA02840058242E0D5ABFABA63453EA")
+                    .build();
             mAdView.loadAd(adRequest);
 
             mAdView.setAdListener(new AdListener() {
@@ -59,7 +63,11 @@ public class AdUtils {
         if (!disableInterstitialAd) {
             mInterstitialAd = new InterstitialAd(activity);
             mInterstitialAd.setAdUnitId(activity.getResources().getString(R.string.interstitial_ad_unit_id));
-            AdRequest adRequest = new AdRequest.Builder().build();
+            //AdRequest adRequest = new AdRequest.Builder().build();
+            AdRequest adRequest = new AdRequest.Builder()
+                    .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                    .addTestDevice("58CA02840058242E0D5ABFABA63453EA")
+                    .build();
             mInterstitialAd.loadAd(adRequest);
         }
     }

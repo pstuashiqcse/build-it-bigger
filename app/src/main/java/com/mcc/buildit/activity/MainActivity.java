@@ -13,7 +13,7 @@ import com.mcc.buildit.utility.RemoteJokeTask;
 import com.mcc.buildit.utility.TestListener;
 import com.mcc.buildit.utility.Utils;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     private Button btnGceJoke;
     private ProgressBar gceProgress;
