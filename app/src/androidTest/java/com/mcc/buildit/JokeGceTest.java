@@ -36,7 +36,7 @@ public class JokeGceTest {
         remoteJokeTask.setResponseListener(new RemoteJokeTask.ResponseListener() {
             @Override
             public void onResponse(String response) {
-                assertTrue("Server response: "+response, (response != null && !response.isEmpty()));
+                assertTrue("Server response: " + response, (response != null && !response.isEmpty()));
             }
         });
         remoteJokeTask.execute();
@@ -46,13 +46,11 @@ public class JokeGceTest {
         mActivityTestRule.getActivity().setTestListener(new TestListener() {
             @Override
             public void onData(final String data) {
-                if(data == null || data.isEmpty()) {
+                if (data == null || data.isEmpty()) {
                     fail("No response from server");
                 }
             }
         });
-
-
 
     }
 
